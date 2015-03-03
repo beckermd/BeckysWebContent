@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hola Querido Planeta!!!</title>
+
+</head>
+<body>
+
+<script language="javascript" type="text/javascript">
+
+
+    phrase = orderPhrase("my", "NAME", "is", "DANIELA")
+
+    for (var j = 0; j < phrase.length; j++){
+        document.write(phrase[j] + " <br/>")
+    }
+
+
+    function orderPhrase() {
+
+        var s = new Array()
+
+        for (var j = 0; j < orderPhrase.arguments.length; j++){
+            s[j] = orderPhrase.arguments[j].charAt(0).toUpperCase() +
+                    orderPhrase.arguments[j].substr(1).toLowerCase()
+        }
+
+        return s
+    }
+
+</script>
+</body>
+</html>

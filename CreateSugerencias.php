@@ -1,6 +1,6 @@
 <?php
 include 'connection.php';
-include "Encabezado.html";
+include "header.html";
 
 $_Sugerencias=$_POST['comments'];
 $_NameS=$_POST['NameSugerencia'];

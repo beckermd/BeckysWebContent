@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <?php
-$pageName = 'indexVs2.php';
+$pageName = 'index.php';
 include "connection.php";
-include "Encabezado.html";
+include "header.html";
 
 ?>
 

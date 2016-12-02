@@ -1,7 +1,7 @@
 
 <?php
 include 'connection.php';
-include "Encabezado.html";
+include "header.html";
 
 
 

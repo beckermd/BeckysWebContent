@@ -20,7 +20,7 @@ include "header.html";
 
                         <h3>
                             <a href="Ensaladas.html">
-                                <span class="font">Ensaladas </a></h3></li>
+                                <span class="font">Ensaladas</a></h3></li>
                     </span>
                     <li class="list-group-item"><span class="badge">5</span>
 

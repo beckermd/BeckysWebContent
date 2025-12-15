@@ -1,0 +1,56 @@
+name: PR Security Scan
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  gitleaks-scan:
+    name: Gitleaks scan for secrets
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Run gitleaks (detect secrets)
+        uses: zricethezav/gitleaks-action@v8
+        with:
+          args: --report-path=gitleaks-report.json --report-format=json --verbose
+
+      - name: Upload gitleaks report
+        uses: actions/upload-artifact@v4
+        with:
+          name: gitleaks-report
+          path: gitleaks-report.json
+
+      - name: Install jq (for JSON parsing)
+        run: |
+          sudo apt-get update && sudo apt-get install -y jq
+
+      - name: Fail if gitleaks found secrets
+        id: check_gitleaks
+        run: |
+          count=$(jq 'length' gitleaks-report.json)
+          echo "Found $count findings in gitleaks-report.json"
+          if [ "$count" -gt 0 ]; then
+            echo "Leaks detected. Failing the job."
+            cat gitleaks-report.json
+            exit 1
+          fi
+          echo "No leaks detected."
+
+      - name: Comment on PR when clean
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            github.issues.createComment({
+              issue_number: context.payload.pull_request.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'Security scan passed: no secrets detected by gitleaks.'
+            })

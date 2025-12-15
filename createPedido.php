@@ -1,4 +1,3 @@
-
 <?php
 include 'connection.php';
 include "Encabezado.html";
@@ -71,12 +70,12 @@ if ($_Noche) {
 }
 
 //Comuniacion con la base de datos.
-$queryResult = mysql_query(
+$queryResult = mysqli_query($con,
     "INSERT INTO beckys.pedidos (Name,Adress,Adress2,Phone,KGJYQ,KGTAYQ,KGCYP,KGJQYR,KGSimples,KGCYQ)
   VALUES('$_Name', '$_Adress','$_Adress2' ,'$_Phone','$_JyQ','$_TAyQ','$_CyP','$_JQyR', '$_S','$_CyQ')");
 if (!$queryResult) {
     print($queryResult);
-    die('Invalid query: ' . mysql_error());
+    die('Invalid query: ' . mysqli_error($con));
 }
 
 

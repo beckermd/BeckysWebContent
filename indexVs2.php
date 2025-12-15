@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 $pageName = 'indexVs2.php';
-include "connection.php";
+ include "connection.php";
 include "Encabezado.html";
 
 ?>

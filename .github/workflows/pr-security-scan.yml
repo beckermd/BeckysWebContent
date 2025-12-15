@@ -18,7 +18,7 @@ jobs:
       - name: Run gitleaks (detect secrets)
         uses: zricethezav/gitleaks-action@v2
         with:
-          args: detect --redact --report-format=json --report-path=gitleaks-report.json
+          args: --redact --report-format=json --report-path=gitleaks-report.json
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

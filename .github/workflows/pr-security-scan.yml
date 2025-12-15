@@ -16,37 +16,9 @@ jobs:
           fetch-depth: 0
 
       - name: Run gitleaks (detect secrets)
-        uses: zricethezav/gitleaks-action@latest
+        uses: zricethezav/gitleaks-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          source: full
-          verbose: true
-          report-format: json
-          report-path: gitleaks-report.json
-
-      - name: Upload gitleaks report
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: gitleaks-report
-          path: gitleaks-report.json
-
-      - name: Install jq (for JSON parsing)
-        run: |
-          sudo apt-get update && sudo apt-get install -y jq
-
-      - name: Fail if gitleaks found secrets
-        id: check_gitleaks
-        run: |
-          count=$(jq 'length' gitleaks-report.json)
-          echo "Found $count findings in gitleaks-report.json"
-          if [ "$count" -gt 0 ]; then
-            echo "Leaks detected. Failing the job."
-            cat gitleaks-report.json
-            exit 1
-          fi
-          echo "No leaks detected."
 
       - name: Comment on PR when clean
         if: success()

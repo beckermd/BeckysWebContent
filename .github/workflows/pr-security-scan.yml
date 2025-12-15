@@ -16,7 +16,7 @@ jobs:
           fetch-depth: 0
 
       - name: Run gitleaks (detect secrets)
-        uses: zricethezav/gitleaks-action@v8
+        uses: zricethezav/gitleaks-action@v7
         with:
           args: --report-path=gitleaks-report.json --report-format=json --verbose
 

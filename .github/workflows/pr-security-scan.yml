@@ -25,7 +25,7 @@ jobs:
         if: always()
         with:
           name: gitleaks-report
-          path: ${{ steps.gitleaks_scan.outputs.report }}
+          path: gitleaks-report.json
 
       - name: Install jq (for JSON parsing)
         run: |

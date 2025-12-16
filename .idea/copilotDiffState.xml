@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="$PROJECT_DIR$/connection.php">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/connection.php" />
+              <option name="originalContent" value="&lt;?php&#10;$db_host= &quot;localhost&quot;;&#10;$db_user= &quot;root&quot;;&#10;$db_password= &quot;&quot;;&#10;$db_name= &quot;beckys_db&quot;;&#10;&#10;// Create connection using mysqli (mysql_* functions were removed in PHP 7+)&#10;$con = mysqli_connect($db_host, $db_user, $db_password, $db_name);&#10;&#10;// Check connection&#10;if (!$con) {&#10;    // Stop execution on failure; in production consider logging instead of echoing details&#10;    die(&quot;Failed to connect to MySQL: &quot; . mysqli_connect_error());&#10;}&#10;&#10;// Set connection charset&#10;mysqli_set_charset($con, 'utf8mb4');&#10;&#10;?&gt;" />
+              <option name="updatedContent" value="&lt;?php&#10;$db_host= &quot;localhost&quot;;&#10;$db_user= &quot;root&quot;;&#10;$db_password= &quot;&quot;;&#10;$db_name= &quot;beckys_db&quot;;&#10;&#10;// Create connection using mysqli (mysql_* functions were removed in PHP 7+)&#10;$con = mysqli_connect($db_host, $db_user, $db_password, $db_name);&#10;&#10;// Check connection&#10;if (!$con) {&#10;    // Stop execution on failure; in production consider logging instead of echoing details&#10;    die(&quot;Failed to connect to MySQL: &quot; . mysqli_connect_error());&#10;}&#10;&#10;// Set connection charset&#10;mysqli_set_charset($con, 'utf8mb4');&#10;&#10;?&gt;" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

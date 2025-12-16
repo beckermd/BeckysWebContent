@@ -38,11 +38,11 @@ else {
     echo "<h4 class='font'> El precio total es de: $" . number_format($_PrecioTotal, 2) . "<h4 class='font'> (no incluye delivery) </h4><br/>";
 
 }
-$queryResult = mysql_query(
+$queryResult = mysqli_query($con,
     "INSERT INTO beckys.PedidosNuevos(KGCyQ1,KGJyQ1,KGCyP1)
   VALUES('$_CyQ','$_JyQ','$_CyP')");
 if (!$queryResult) {
     print($queryResult);
-    die('Invalid query: ' . mysql_error());
+    die('Invalid query: ' . mysqli_error($con));
 }
 ?>
